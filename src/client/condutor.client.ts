@@ -42,7 +42,7 @@ export class condutorClient{
     }
     public async delete (id: number): Promise<void>{
         try{
-            await this.axiosClient.delete(`/ativos?id=${id}`)
+            await this.axiosClient.delete(`/condutor?id=${id}`)
         } catch (error: any){
             return Promise.reject(error.response)
         }
