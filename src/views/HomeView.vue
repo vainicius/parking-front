@@ -1,18 +1,38 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
-  </div>
+ <table width="500">
+         <thead>
+             <tr>
+                 <th scope="col">Marca</th>
+                 <th scope="col">Veículo</th>
+                 <th scope="col">Placa</th>
+                 <th scope="col">Hora Entrada</th>
+             </tr>
+         </thead>
+         <tbody>
+           <tr>
+               <td>Fiat</td>
+               <td>Palio</td>
+           </tr>
+           <tr>
+               <td>Volkswagem</td>
+               <td>Nivus</td>
+           </tr>
+         </tbody>
+        
+        
+        </table>
+  
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { VueElement, defineComponent } from 'vue';
 import HelloWorld from '@/components/HelloWorld.vue'; // @ is an alias to /src
-
+import HomeParking from '@/components/HomeParking.vue'
 export default defineComponent({
-  name: 'HomeView',
+  name: 'HomeView', 
   components: {
     HelloWorld,
+    
   },
 });
 </script>

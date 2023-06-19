@@ -1,8 +1,11 @@
 <template>
+  
   <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
+  
+    <router-link to="/">Inicio</router-link> |
+    <router-link to="/about">Cadastros</router-link> |
+    <router-link to="/cadastros">Cadastros</router-link>  
+    </nav>
   <router-view/>
 </template>
 
@@ -12,19 +15,31 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color: #0a0a0a;
+}
+body{
+  background-color: #ffffff;
 }
 
+
+
+
 nav {
-  padding: 30px;
+  padding: 2rem;
+  background-color: #42c58a;
+  
 
   a {
     font-weight: bold;
-    color: #2c3e50;
+    color: #000000;
 
     &.router-link-exact-active {
-      color: #42b983;
+      color: #ffffff;
+      
     }
   }
+ 
 }
+
+
 </style>
