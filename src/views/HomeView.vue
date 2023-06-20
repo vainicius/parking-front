@@ -1,27 +1,34 @@
 <template>
- <table width="500">
-         <thead>
-             <tr>
-                 <th scope="col">Marca</th>
-                 <th scope="col">Veículo</th>
-                 <th scope="col">Placa</th>
-                 <th scope="col">Hora Entrada</th>
-             </tr>
-         </thead>
-         <tbody>
-           <tr>
-               <td>Fiat</td>
-               <td>Palio</td>
-           </tr>
-           <tr>
-               <td>Volkswagem</td>
-               <td>Nivus</td>
-           </tr>
-         </tbody>
-        
-        
-        </table>
-  
+ <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">First</th>
+        <th scope="col">Last</th>
+        <th scope="col">Handle</th>
+      </tr>
+    </thead>
+    <tbody class="table-group-divider">
+      <tr>
+        <th scope="row">1</th>
+        <td>Mark</td>
+        <td>Otto</td>
+        <td>@mdo</td>
+      </tr>
+      <tr>
+        <th scope="row">2</th>
+        <td>Jacob</td>
+        <td>Thornton</td>
+        <td>@fat</td>
+      </tr>
+      <tr>
+        <th scope="row">3</th>
+        <td colspan="2">Larry the Bird</td>
+        <td>@twitter</td>
+      </tr>
+    </tbody>
+  </table>
+
 </template>
 
 <script lang="ts">
@@ -35,4 +42,8 @@ export default defineComponent({
     
   },
 });
+
 </script>
+<style>
+
+</style>
