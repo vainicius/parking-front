@@ -3,29 +3,50 @@
     <thead>
       <tr>
         <th scope="col">#</th>
-        <th scope="col">First</th>
-        <th scope="col">Last</th>
-        <th scope="col">Handle</th>
+        <th scope="col">Veículo</th>
+        <th scope="col">Placa</th>
+        <th scope="col">Horário entrada</th>
+        <th scope="col">Horário saída</th>
       </tr>
     </thead>
     <tbody class="table-group-divider">
       <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>@mdo</td>
+        <th scope="row"><span class="badge text-bg-success">EM ABERTO</span>
+1</th>
+        <td>Vinicius</td>
+        <td>ABC-0123</td>
+        <td>20-06-23 12:06</td>
+        <td><button type="button" class="btn btn-outline-danger">Editar</button>
+          
+</td>
+        
       </tr>
       <tr>
-        <th scope="row">2</th>
-        <td>Jacob</td>
-        <td>Thornton</td>
-        <td>@fat</td>
+        <th scope="row"><span class="badge text-bg-success">EM ABERTO</span> 2</th>
+        <td>Cliente 02</td>
+        <td>Placa</td>
+        <td>DD-MM-AA</td>
+        <td><button type="button" class="btn btn-outline-danger">Editar</button>
+</td>
       </tr>
       <tr>
-        <th scope="row">3</th>
-        <td colspan="2">Larry the Bird</td>
-        <td>@twitter</td>
+        <th scope="row"><span class="badge rounded-pill text-bg-danger">ENCERRADO</span>
+ 3</th>
+        <td>Cliente 03</td>
+        <td>Placa</td>
+        <td>20-06-23 12:06</td>
+        <td>20-06-23 17:06
+</td>
       </tr>
+      <tr>
+        <th scope="row"><span class="badge text-bg-success">EM ABERTO</span> 4</th>
+        <td>Cliente 04</td>
+        <td>Placa</td>
+        <td>DD-MM-AA</td>
+        <td><button type="button" class="btn btn-outline-danger">Editar</button>
+</td>
+  </tr>
+
     </tbody>
   </table>
 
