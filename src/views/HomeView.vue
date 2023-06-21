@@ -7,6 +7,10 @@
         <th scope="col">Placa</th>
         <th scope="col">Horário entrada</th>
         <th scope="col">Horário saída</th>
+        <th scope="col">Veículo</th>
+        <th scope="col">Placa</th>
+        <th scope="col">Horário entrada</th>
+        <th scope="col">Horário saída</th>
       </tr>
     </thead>
 '    <tbody class="table-group-divider">
@@ -22,11 +26,35 @@
         
       </tr>
       <tr>
+        <th scope="row"><span class="badge text-bg-success">EM ABERTO</span>
+1</th>
+        <td>Vinicius</td>
+        <td>ABC-0123</td>
+        <td>20-06-23 12:06</td>
+        <td><button type="button" class="btn btn-outline-danger">Editar</button>
+          
+</td>
+        
         <th scope="row"><span class="badge text-bg-success">EM ABERTO</span> 2</th>
         <td>Cliente 02</td>
         <td>Placa</td>
         <td>DD-MM-AA</td>
         <td><button type="button" class="btn btn-outline-danger">Editar</button>
+</td>
+      </tr>
+      <tr>
+        <th scope="row"><span class="badge text-bg-success">EM ABERTO</span> 2</th>
+        <td>Cliente 02</td>
+        <td>Placa</td>
+        <td>DD-MM-AA</td>
+        <td><button type="button" class="btn btn-outline-danger">Editar</button>
+</td>
+        <th scope="row"><span class="badge rounded-pill text-bg-danger">ENCERRADO</span>
+ 3</th>
+        <td>Cliente 03</td>
+        <td>Placa</td>
+        <td>20-06-23 12:06</td>
+        <td>20-06-23 17:06
 </td>
       </tr>
       <tr>
@@ -38,6 +66,14 @@
         <td>20-06-23 17:06
 </td>
       </tr>
+      <tr>
+        <th scope="row"><span class="badge text-bg-success">EM ABERTO</span> 4</th>
+        <td>Cliente 04</td>
+        <td>Placa</td>
+        <td>DD-MM-AA</td>
+        <td><button type="button" class="btn btn-outline-danger">Editar</button>
+</td>
+  </tr>
       <tr>
         <th scope="row"><span class="badge text-bg-success">EM ABERTO</span> 4</th>
         <td>Cliente 04</td>
