@@ -9,8 +9,8 @@
         <th scope="col">Horário saída</th>
       </tr>
     </thead>
-    <tbody class="table-group-divider">
-      <tr>
+'    <tbody class="table-group-divider">
+'      <tr>
         <th scope="row"><span class="badge text-bg-success">EM ABERTO</span>
 1</th>
         <td>Vinicius</td>
