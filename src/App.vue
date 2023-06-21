@@ -11,19 +11,19 @@
             <a class="nav-link active" aria-current="page" href="/">Inicio</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/categorias">Categorias</a>
+            <a class="nav-link" href="/categorias">Marcas</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/">Cadastros</a>
+            <a class="nav-link" href="/cadastrar">Cadastros</a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Configurações
             </a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="/">Action</a></li>
-              <li><a class="dropdown-item" href="/">Another action</a></li>
-              <li><a class="dropdown-item" href="">Something else here</a></li>
+              <li><a class="dropdown-item" href="#">Action</a></li>
+              <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li>
             </ul>
           </li>
         </ul>
@@ -50,6 +50,23 @@ body{
 
 
 
+
+nav {
+  padding: 2rem;
+  background-color: #42c58a;
+  
+
+  a {
+    font-weight: bold;
+    color: #000000;
+
+    &.router-link-exact-active {
+      color: #ffffff;
+      
+    }
+  }
+ 
+}
 
 
 </style>
