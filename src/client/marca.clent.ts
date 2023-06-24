@@ -6,7 +6,7 @@ export class MarcaClient {
 
   constructor() {
     this.axiosClient = axios.create({
-      baseURL: "http://localhost:8080",
+      baseURL: "http://localhost:8090/api/marca",
       headers: { "Content-type": "application/json" },
     });
   }
@@ -19,7 +19,7 @@ export class MarcaClient {
   }
   public async findAll(): Promise<Marca[]> {
     try {
-      return (await this.axiosClient.get<Marca[]>(`/marca/listar`)).data;
+      return (await this.axiosClient.get<Marca[]>(`/lista`)).data;
     } catch (error: any) {
       return Promise.reject(error.response);
     }
