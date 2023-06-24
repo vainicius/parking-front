@@ -43,3 +43,55 @@
     </tbody>
   </table>
 </template>
+
+<script lang="ts">
+import { defineComponent } from 'vue';
+import MarcaClient  from '@/client/marca.clent';
+import { Marca } from '@/model/marca';
+
+export default defineComponent({
+  name: 'MarcaLista',
+  data() {
+    return {
+      marcasList: new Array<Marca>()
+    }
+  },
+  mounted() {
+    this.findAll();
+  },
+  methods: {
+    findAll() {
+      MarcaClient.findAll()
+      .then(sucess =>{
+        this.marcasList = sucess
+      })
+      .catch(error => {
+        console.log(error)
+      });
+   }
+  }
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
