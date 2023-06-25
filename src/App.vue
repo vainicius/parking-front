@@ -1,7 +1,7 @@
 <template>
   <nav class=" navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
-      <a class="navbar-brand " href="/">ParkingApp</a>
+      <router-link class="navbar-brand " to="/">ParkingApp</router-link>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
         aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -9,13 +9,13 @@
       <div class="collapse navbar-collapse d-flex justify-content-between " id="navbarNavDropdown">
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="/">Inicio</a>
+            <router-link class="nav-link active" aria-current="page" to="/">Inicio</router-link>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/categorias">Marcas</a>
+            <router-link class="nav-link" to="/categorias">Marcas</router-link>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/cadastrar">Cadastros</a>
+            <router-link class="nav-link" to="/cadastrar">Cadastros</router-link>
 
           </li>
           <li class="nav-item dropdown">
@@ -29,8 +29,9 @@
             </ul>
           </li>
         </ul>
-        <button type="button" class=" btn btn-primary btn-sm bg-success border border-success 
-">Nova movimentação</button >
+        <router-link
+         type="button" to="/" class=" btn btn-primary btn-sm bg-success border border-success 
+">Nova movimentação </router-link>
       </div>
     </div>
   </nav>

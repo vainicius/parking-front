@@ -10,9 +10,11 @@
       </tr>
     </thead>
      <tbody class="table-group-divider">
-       <tr>
-        <th scope="row"><span class="badge text-bg-success">ATIVO</span>
-          1</th>
+       <tr v-for="item in marcasList" :key="item.id">
+        <th scope="row"><span v-if="item.ativo" class="badge text-bg-success">ATIVO</span>
+        {{ item.id }}</th>
+        <th scope="row"><span v-if="!item.ativo" class="badge rounded-pill text-bg-danger">INATIVO</span>
+          {{ item.id }}</th>
         <td>Peugeot</td>
         <td><button type="button" class="btn btn-outline-danger">Editar</button>
 

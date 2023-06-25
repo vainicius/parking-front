@@ -1,20 +1,20 @@
 import { Marca } from "@/model/marca";
 import axios, {AxiosInstance} from "axios"
 
-export class MarcaClient {
+class MarcaClient {
   private axiosClient: AxiosInstance;
 
   constructor() {
     this.axiosClient = axios.create({
-      baseURL: "http://localhost:8090/api/marca",
-      headers: { "Content-type": "application/json" },
+      baseURL: 'http://localhost:8090/api/marca',
+      headers: { 'Content-type' : 'application/json' },
     });
   }
   public async findById(id: number): Promise<Marca> {
     try {
-      return (await this.axiosClient.get(`/marcas/${id}`)).data;
+      return (await this.axiosClient.get<Marca>(`/${id}`)).data;
     } catch (error: any) {
-      return Promise.reject(error.response);
+      return Promise.reject(error.response)
     }
   }
   public async findAll(): Promise<Marca[]> {
@@ -46,3 +46,4 @@ export class MarcaClient {
     }
   }
 }
+export default new MarcaClient();
