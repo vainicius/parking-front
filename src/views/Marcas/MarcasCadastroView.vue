@@ -2,7 +2,7 @@
     <div class="row">
           <div class="col-md-12 text-start">
             <label class="form-label">Nome da Marca:</label>
-            <input type="text" class="form-control" v-model="marca.nome">
+            <input type="text" class="form-control" v-model="marca.nomeMarca">
           </div>
            <div class="col-md-3 offset-md-9">
             <div class="btn-group" role="group" aria-label="Basic mixed styles example">

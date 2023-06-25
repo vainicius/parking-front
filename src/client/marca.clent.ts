@@ -26,7 +26,7 @@ class MarcaClient {
   }
   public async cadastrar(marca: Marca): Promise<Marca> {
     try {
-      return (await this.axiosClient.post<Marca>("/marcas", marca)).data;
+      return (await this.axiosClient.post<Marca>(``, marca)).data;
     } catch (error: any) {
       return Promise.reject(error.response);
     }
