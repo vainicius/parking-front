@@ -18,11 +18,13 @@
         <th scope="row">{{ item.nomeMarca }} </th>
         
         
-        <td><button type="button" class="btn btn-outline-danger">Editar</button>
+        <td><button type="button" class="btn btn-warning">Editar</button>
+          <!-- Button trigger modal -->
+  <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    Excluir <i class="bi bi-trash3"></i>
+  </button>
         </td>
       </tr>
-  
-
     </tbody>
   </table>
 </template>
@@ -36,7 +38,7 @@ export default defineComponent({
   name: 'MarcaLista',
   data() {
     return {
-      marcasList: new Array<Marca>()
+      marcasList: new Array<Marca>(),
     }
   },
   mounted() {
@@ -51,30 +53,19 @@ export default defineComponent({
       .catch(error => {
         console.log(error)
       });
-   }
-  }
+   },
+  },
+  
 });
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 </script>
+
+
+<style>
+@import url('../../../node_modules/bootstrap-icons/font/bootstrap-icons.css');
+
+
+
+</style>
