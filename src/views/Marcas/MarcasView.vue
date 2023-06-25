@@ -3,6 +3,10 @@
         <h4 class="alert-heading">{{ mensagem.titulo }}</h4>
         <p>{{ mensagem.texto }}</p>
       </div>
+      <div v-if="this.form === 'deleted'" :class= "mensagem.css" role="alert">
+          <h4 class="alert-heading">{{ mensagem.titulo }}</h4>
+          <p>{{ mensagem.texto }}</p>
+        </div>
   <table class="table">
     <thead>
       <tr>
@@ -22,7 +26,8 @@
         <th scope="row">{{ item.nomeMarca }} </th>
         
         
-        <td><button type="button" class="btn btn-warning">Editar</button>
+        <td><router-link type="button" class="btn btn-warning" :to="{ name: 'editar-marca', query: { id: item.id, form: 'editar' } }">
+      Excluir <i class="bi bi-trash3"></i></router-link>
         <router-link type="button" class="btn btn-danger" :to="{ name: 'deletar-marca', query: {id: item.id, form: 'deletar'}}">
     Excluir <i class="bi bi-trash3"></i></router-link>
         </td>
@@ -61,9 +66,24 @@ export default defineComponent({
       })
       .catch(error => {
         console.log(error)
-      });
-      
-   }
+      });     
+   },
+   onClickExcluir() {
+      MarcaClient.delete(this.marca.id)
+        .then(sucess => {
+          this.marca = new Marca()
+          this.mensagem.ativo = true;
+          this.mensagem.texto = "Marca apagada com sucesso.";
+          this.mensagem.titulo = "Funciona!";
+          this.mensagem.css = "alert alert-success alert-dismissible fade show";
+        })
+        .catch(error => {
+          this.mensagem.ativo = true;
+          this.mensagem.texto = error;
+          this.mensagem.titulo = "Algo deu errado! ";
+          this.mensagem.css = "alert alert-danger alert-dismissible fade show";
+        });
+    }
  } 
 });
 

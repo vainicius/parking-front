@@ -30,8 +30,13 @@ const routes: Array<RouteRecordRaw> = [
     path: "/deletar-marca",
     name: "deletar-marca",
     component: () => import("../views/Marcas/MarcasDeleteView.vue"),
-  }
-  ];
+  },
+  {
+    path: "/editar-marca",
+    name: "editar-marca",
+    component: () => import("../views/Marcas/MarcasEditView.vue"),
+  },
+];
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),

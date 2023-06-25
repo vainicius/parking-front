@@ -8,7 +8,7 @@
             <div class="btn-group" role="group" aria-label="Basic mixed styles example">
       <router-link type="button" to="/marcas" class="btn btn-warning mb-1">Voltar</router-link>
       
-      <button type="button" class="btn btn-success mb-1" @click="onClickCadastrar">Cadastrar</button>
+      <button v-if="this.form === 'editar'" type="button" class="btn btn-warning" @click="onClickEditar()">Editar</button>
             </div>   
         </div> 
     </div>
@@ -22,7 +22,7 @@
 </template>
 
 <script lang="ts">
-import marcaClient from '@/client/marca.clent';
+import MarcaClient from '@/client/marca.clent';
 import { Marca } from '@/model/marca';
 import { defineComponent } from 'vue';
 
@@ -34,8 +34,8 @@ export default defineComponent({
             mensagem: {
                 ativo: false as boolean,
                 titulo: "" as string,
-                texto: "" as string,
-                css: "" as string
+                css: "" as string,
+                texto: "" as string
             }
         }
     },
@@ -56,7 +56,7 @@ export default defineComponent({
     methods:{
 
         onClickCadastrar(){
-            marcaClient.cadastrar(this.marca)
+            MarcaClient.cadastrar(this.marca)
             .then(sucess => {
                 this.marca = new Marca()
                 
@@ -68,16 +68,32 @@ export default defineComponent({
             .catch(error =>{
                 this.mensagem.ativo = true;
                 this.mensagem.titulo = "Algo deu errado!";
-                this.mensagem.texto = error.data;
+                this.mensagem.texto = error;
                 this.mensagem.css = "alert alert-danger alert-dismissible fade show"
 
             });
         },
         findById(id: number){
-            marcaClient.findById(id)
-            .then(sucess =>{
-                this.marca = sucess
-            });
+            MarcaClient.findById(id)
+            .then( sucess =>{
+                    this.marca = sucess});
+        },
+           onClickEditar() {
+            MarcaClient.atualizar(this.marca.id, this.marca)
+                .then(sucess => {
+                    this.marca = new Marca()
+                    this.mensagem.ativo = true;
+                    this.mensagem.texto = "A marca foi editada com sucesso!."
+                    this.mensagem.titulo = "Funciona!";
+                    this.mensagem.css = "alert alert-success alert-dismissible fade show";
+                    
+                })
+                .catch(error => {
+                    this.mensagem.ativo = true;
+                    this.mensagem.texto = error.data;
+                    this.mensagem.titulo = "Algo deu errado! ";
+                    this.mensagem.css = "alert alert-danger alert-dismissible fade show";
+                });
         }
     }
 });

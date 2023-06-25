@@ -26,14 +26,14 @@ class MarcaClient {
   }
   public async cadastrar(marca: Marca): Promise<Marca> {
     try {
-      return (await this.axiosClient.post<Marca>(``, marca)).data;
+      return (await this.axiosClient.post<Marca>(`marca`, marca)).data;
     } catch (error: any) {
       return Promise.reject(error.response);
     }
   }
-  public async atualizar(marca: Marca): Promise<Marca> {
+  public async atualizar(id: number, marca: Marca): Promise<Marca> {
     try {
-      return (await this.axiosClient.put<Marca>("/", marca)).data;
+      return (await this.axiosClient.put<Marca>(`marca?id=${id}`)).data;
     } catch (error: any) {
       return Promise.reject(error.response);
     }

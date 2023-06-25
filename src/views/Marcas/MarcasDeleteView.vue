@@ -8,7 +8,7 @@
             <div class="btn-group" role="group" aria-label="Basic mixed styles example">
       <router-link type="button" to="/marcas" class="btn btn-warning mb-1">Voltar</router-link>
       
-      <button v-if="this.form === 'deletar'" type="button" class="btn btn-danger" @click="onClickExcluir">Cadastrar</button>
+      <button v-if="this.form === 'deletar'" type="button" class="btn btn-danger" @click="onClickExcluir">Excluir</button>
             </div>   
         </div> 
     </div>
@@ -22,7 +22,7 @@
 </template>
 
 <script lang="ts">
-import marcaClient from '@/client/marca.clent';
+import MarcaClient from '@/client/marca.clent';
 import { Marca } from '@/model/marca';
 import { defineComponent } from 'vue';
 
@@ -34,8 +34,8 @@ export default defineComponent({
             mensagem: {
                 ativo: false as boolean,
                 titulo: "" as string,
-                texto: "" as string,
-                css: "" as string
+                css: "" as string,
+                texto: "" as string
             }
         }
     },
@@ -56,7 +56,7 @@ export default defineComponent({
     methods:{
 
         onClickCadastrar(){
-            marcaClient.cadastrar(this.marca)
+            MarcaClient.cadastrar(this.marca)
             .then(sucess => {
                 this.marca = new Marca()
                 
@@ -74,21 +74,23 @@ export default defineComponent({
             });
         },
         findById(id: number){
-            marcaClient.findById(id)
-            .then(sucess =>{
-                this.marca = sucess
-            });
+            MarcaClient.findById(id)
+            .then( sucess =>{
+                    this.marca = sucess});
         },
            onClickExcluir() {
-            marcaClient.delete(this.marca.id)
+            MarcaClient.delete(this.marca.id)
                 .then(sucess => {
                     this.marca = new Marca()
-
-                    this.$router.push({ name: 'marcas' });
+                    this.mensagem.ativo = true;
+                    this.mensagem.texto = "A marca foi deletada/desativada com sucesso."
+                    this.mensagem.titulo = "Funciona!";
+                    this.mensagem.css = "alert alert-success alert-dismissible fade show";
+                    
                 })
                 .catch(error => {
                     this.mensagem.ativo = true;
-                    this.mensagem.texto = error;
+                    this.mensagem.texto = error.data;
                     this.mensagem.titulo = "Algo deu errado! ";
                     this.mensagem.css = "alert alert-danger alert-dismissible fade show";
                 });
