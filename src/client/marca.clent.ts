@@ -6,20 +6,20 @@ class MarcaClient {
 
   constructor() {
     this.axiosClient = axios.create({
-      baseURL: 'http://localhost:8090/api/marca',
+      baseURL: 'http://localhost:8090/api/',
       headers: { 'Content-type' : 'application/json' },
     });
   }
   public async findById(id: number): Promise<Marca> {
     try {
-      return (await this.axiosClient.get<Marca>(`/${id}`)).data;
+      return (await this.axiosClient.get<Marca>(`marca?id=${id}`)).data
     } catch (error: any) {
       return Promise.reject(error.response)
     }
   }
   public async findAll(): Promise<Marca[]> {
     try {
-      return (await this.axiosClient.get<Marca[]>(`/lista`)).data;
+      return (await this.axiosClient.get<Marca[]>(`marca/lista`)).data;
     } catch (error: any) {
       return Promise.reject(error.response);
     }
@@ -40,7 +40,7 @@ class MarcaClient {
   }
   public async delete(id: number): Promise<void> {
     try {
-      await this.axiosClient.delete(`/marca?id=${id}`);
+      return (await this.axiosClient.delete(`marca?id=${id}`)).data;
     } catch (error: any) {
       return Promise.reject(error.response);
     }

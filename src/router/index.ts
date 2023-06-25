@@ -26,7 +26,12 @@ const routes: Array<RouteRecordRaw> = [
     name: "cadastrar-marca",
     component: () => import("../views/Marcas/MarcasCadastroView.vue"),
   },
-];
+  {
+    path: "/deletar-marca",
+    name: "deletar-marca",
+    component: () => import("../views/Marcas/MarcasDeleteView.vue"),
+  }
+  ];
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),

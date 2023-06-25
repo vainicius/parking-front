@@ -1,4 +1,8 @@
 <template>
+   <div v-if="mensagem.ativo" :class= "mensagem.css" role="alert">
+        <h4 class="alert-heading">{{ mensagem.titulo }}</h4>
+        <p>{{ mensagem.texto }}</p>
+      </div>
   <table class="table">
     <thead>
       <tr>
@@ -19,10 +23,8 @@
         
         
         <td><button type="button" class="btn btn-warning">Editar</button>
-          <!-- Button trigger modal -->
-  <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
-    Excluir <i class="bi bi-trash3"></i>
-  </button>
+        <router-link type="button" class="btn btn-danger" :to="{ name: 'deletar-marca', query: {id: item.id, form: 'deletar'}}">
+    Excluir <i class="bi bi-trash3"></i></router-link>
         </td>
       </tr>
     </tbody>
@@ -39,6 +41,13 @@ export default defineComponent({
   data() {
     return {
       marcasList: new Array<Marca>(),
+      marca: new Marca(),
+      mensagem: {
+        ativo: false as boolean,
+        titulo: "" as string,
+        texto: "" as string,
+        css: "" as string
+      }
     }
   },
   mounted() {
@@ -53,9 +62,9 @@ export default defineComponent({
       .catch(error => {
         console.log(error)
       });
-   },
-  },
-  
+      
+   }
+ } 
 });
 
 
