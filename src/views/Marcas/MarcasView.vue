@@ -3,17 +3,19 @@
     <thead>
       <tr>
         <th scope="col">#</th>
-        <th scope="col">Marca</th><td><button type="button" class="btn btn-success">Cadastrar</button>
-
-          </td>
-        
+        <th scope="col">Marca</th>
+        <td>
+        <router-link type="button" to="/cadastrar-marca" class="btn btn-success">Cadastrar</router-link>
+        </td>
       </tr>
     </thead>
      <tbody class="table-group-divider">
       
       <tr v-for="item in marcasList" :key="item.id">
-        <th scope="row"><span v-if="item.ativo" class="badge text-bg-success">ATIVO</span>{{ item.id }} </th>
-        <th scope="row"><span v-if="!item.ativo" class="badge rounded-pill text-bg-danger">INATIVO</span>{{ item.nomeMarca }} </th>
+        <th scope="row"><span v-if="item.ativo" class="badge text-bg-success">ATIVO</span>
+          <span v-if="!item.ativo" class="badge rounded-pill text-bg-danger">INATIVO</span>
+          {{ item.id }} </th>
+        <th scope="row">{{ item.nomeMarca }} </th>
         
         
         <td><button type="button" class="btn btn-outline-danger">Editar</button>

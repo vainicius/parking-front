@@ -12,7 +12,7 @@
             <router-link class="nav-link active" aria-current="page" to="/">Inicio</router-link>
           </li>
           <li class="nav-item">
-            <router-link class="nav-link" to="/categorias">Marcas</router-link>
+            <router-link class="nav-link" to="/marcas">Marcas</router-link>
           </li>
           <li class="nav-item">
             <router-link class="nav-link" to="/cadastrar">Cadastros</router-link>
