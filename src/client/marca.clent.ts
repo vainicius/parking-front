@@ -31,9 +31,9 @@ class MarcaClient {
       return Promise.reject(error.response);
     }
   }
-  public async atualizar(id: number, marca: Marca): Promise<Marca> {
+  public async atualizar(id: number, marca: Marca): Promise<string> {
     try {
-      return (await this.axiosClient.put<Marca>(`marca?id=${id}`)).data;
+      return (await this.axiosClient.put<string>(`marca?id=${id}`, marca)).data;
     } catch (error: any) {
       return Promise.reject(error.response);
     }
