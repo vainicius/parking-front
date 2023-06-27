@@ -1,7 +1,7 @@
 <template>
     <div class="row">
           <div class="col-md-12 text-start">
-            <label class="form-label">Nome da Marca:</label>
+            <label class="form-label">Nome do Modelo:</label>
             <input type="text" class="form-control" v-model="marca.nomeMarca">
           </div>
            <div class="col-md-3 offset-md-9">
@@ -27,10 +27,10 @@ import { Marca } from '@/model/marca';
 import { defineComponent } from 'vue';
 
 export default defineComponent({
-    name: 'MarcaCadastro',
+    name: 'ModeloDesativar',
     data(){
         return {
-            marca: new Marca(),
+            modelo: new Modelo();
             mensagem: {
                 ativo: false as boolean,
                 titulo: "" as string,
