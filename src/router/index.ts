@@ -36,6 +36,26 @@ const routes: Array<RouteRecordRaw> = [
     name: "editar-marca",
     component: () => import("../views/Marcas/MarcasEditView.vue"),
   },
+  {
+    path: "/modelos",
+    name: "modelos",
+    component: () => import("../views/Marcas/ModeloView.vue"),
+  },
+  {
+    path: "/cadastrar-modelos",
+    name: "cadastrar-modelos",
+    component: () => import("../views/Marcas/ModelosCadastroView.vue"),
+  },
+  {
+    path: "/deletar-modelo",
+    name: "deletar-modelo",
+    component: () => import("../views/Marcas/ModelosDeleteView.vue"),
+  },
+  {
+    path: "/editar-modelo",
+    name: "editar-modelo",
+    component: () => import("../views/Marcas/ModelosEditView.vue"),
+  },
 ];
 
 const router = createRouter({

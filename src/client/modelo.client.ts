@@ -6,43 +6,44 @@ export class ModeloClient {
 
   constructor() {
     this.axiosClient = axios.create({
-      baseURL: "http://localhost:8080",
+      baseURL: "http://localhost:8090/api",
       headers: { "Content-type": "application/json" },
     });
   }
   public async findById(id: number): Promise<Modelo> {
     try {
-      return (await this.axiosClient.get(`/modelos/${id}`)).data;
+      return (await this.axiosClient.get(`modelo?id=${id}`)).data;
     } catch (error: any) {
       return Promise.reject(error.response);
     }
   }
   public async findAll(): Promise<Modelo[]> {
     try {
-      return (await this.axiosClient.get<Modelo[]>(`/modelo/listar`)).data;
+      return (await this.axiosClient.get<Modelo[]>(`modelo/lista`)).data;
     } catch (error: any) {
       return Promise.reject(error.response);
     }
   }
   public async cadastrar(modelo: Modelo): Promise<Modelo> {
     try {
-      return (await this.axiosClient.post<Modelo>("/modelos", modelo)).data;
+      return (await this.axiosClient.post<Modelo>(`modelos`, modelo)).data;
     } catch (error: any) {
       return Promise.reject(error.response);
     }
   }
-  public async atualizar(modelo: Modelo): Promise<Modelo> {
+  public async atualizar(id: number, modelo: Modelo): Promise<Modelo> {
     try {
-      return (await this.axiosClient.put<Modelo>("/", modelo)).data;
+      return (await this.axiosClient.put<Modelo>(`modelo?id=${id}`, modelo)).data;
     } catch (error: any) {
       return Promise.reject(error.response);
     }
   }
   public async delete(id: number): Promise<void> {
     try {
-      await this.axiosClient.delete(`/modelo?id=${id}`);
+      await this.axiosClient.delete(`marca?id=${id}`);
     } catch (error: any) {
       return Promise.reject(error.response);
     }
   }
 }
+export default new ModeloClient();
