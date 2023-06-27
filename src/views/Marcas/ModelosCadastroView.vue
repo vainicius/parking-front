@@ -2,16 +2,17 @@
   <div class="row">
     <div class="col-md-12 text-start">
       <label class="form-label">Nome do Modelo:</label>
-      <input type="text" class="form-control" v-model="modelo.nomeModelo" />
+      <input
+        type="text"
+        class="form-control"
+        v-model="modeloModel.nomeModelo"
+      />
     </div>
     <div class="col-md-12 text-start">
       <label class="form-label">Id da Marca:</label>
-      <input type="text" class="form-control" v-model="marca.id" />
+      <input v-on:change="findMarca()" type="text" class="form-control" v-model="idMarca" />
     </div>
-     <div class="col-md-12 text-start">
-      <label class="form-label">Nome da Marca:</label>
-      <input type="text" class="form-control" v-model="marca.nomeMarca" />
-    </div>
+
     <div class="col-md-3 offset-md-9">
       <div
         class="btn-group"
@@ -50,9 +51,10 @@ export default defineComponent({
   name: "ModeloCadastro",
   data() {
     return {
+      marcaModel: new Marca(),
+      modeloModel: new Modelo(),
       marcasList: new Array<Marca>(),
-      modelo: new Modelo(),
-      marca: new Marca(),
+      idMarca: 0 as Number,
       mensagem: {
         ativo: false as boolean,
         titulo: "" as string,
@@ -77,15 +79,13 @@ export default defineComponent({
   methods: {
     onClickCadastrar() {
       modeloClient
-        .cadastrar(this.modelo)
+        .cadastrar(this.modeloModel)
         .then((sucess) => {
-          this.modelo = new Modelo();
-          this.marca = new Marca();
-          this.marca.id =
+          this.modeloModel = sucess;
 
           this.mensagem.ativo = true;
           this.mensagem.titulo = "Funciona!";
-          this.mensagem.texto = "A marca foi cadastrada com sucesso!";
+          this.mensagem.texto = "O modelo foi cadastrado com sucesso!";
           this.mensagem.css = "alert alert-success alert-dismissible fade show";
         })
         .catch((error) => {
@@ -97,18 +97,28 @@ export default defineComponent({
     },
     findById(id: number) {
       modeloClient.findById(id).then((sucess) => {
-        this.modelo = sucess;
+        this.modeloModel = sucess;
       });
     },
     findAll() {
-      marcaClent.findAll()
-      .then(sucess =>{
-        this.marcasList = sucess
-      })
-      .catch(error => {
-        console.log(error)
-      });     
-   },
+      marcaClent
+        .findAll()
+        .then((sucess) => {
+          this.marcasList = sucess;
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
+    findMarca(){
+
+      if(this.idMarca != 0){
+        marcaClent.findById(Number(this.idMarca))
+      .then((sucess) => {
+        this.modeloModel.marca = sucess;
+      });
+      }
+    }
   },
 });
 </script>
