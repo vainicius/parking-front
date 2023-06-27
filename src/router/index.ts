@@ -42,8 +42,8 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import("../views/Marcas/ModeloView.vue"),
   },
   {
-    path: "/cadastrar-modelos",
-    name: "cadastrar-modelos",
+    path: "/cadastrar-modelo",
+    name: "cadastrar-modelo",
     component: () => import("../views/Marcas/ModelosCadastroView.vue"),
   },
   {

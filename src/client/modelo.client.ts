@@ -26,7 +26,7 @@ export class ModeloClient {
   }
   public async cadastrar(modelo: Modelo): Promise<Modelo> {
     try {
-      return (await this.axiosClient.post<Modelo>(`modelos`, modelo)).data;
+      return (await this.axiosClient.post<Modelo>(`modelo`, modelo)).data;
     } catch (error: any) {
       return Promise.reject(error.response);
     }
