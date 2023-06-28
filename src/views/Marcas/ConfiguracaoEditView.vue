@@ -97,7 +97,19 @@ export default defineComponent({
       return this.$route.query.form;
     },
   },
+  mounted() {
+    if (this.id !== undefined) {
+      this.findById(Number(this.id));
+    }
+  },
+  
   methods: {
+    findById(id: number) {
+      this.ConfiguracaoClient.findById(id)
+      .then((sucess) => {
+        this.ConfiguracaoModel= sucess;
+      });
+    },
 
     onClickEditar() {
       this.ConfiguracaoClient.atualizar(this.ConfiguracaoModel.id, this.ConfiguracaoModel)
@@ -110,7 +122,8 @@ export default defineComponent({
           this.mensagem.css = "alert alert-success alert-dismissible fade show";
         })
         .catch((error) => {
-          console.log(this.ConfiguracaoModel.id)
+          console.log(this.ConfiguracaoModel.id);
+          console.log(this.ConfiguracaoModel);
           this.mensagem.ativo = true;
           this.mensagem.texto = error.data;
           this.mensagem.titulo = "Algo deu errado! ";
