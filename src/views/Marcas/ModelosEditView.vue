@@ -1,12 +1,12 @@
 <template>
   <div class="row">
     <div class="col-md-12 text-start">
-      <label class="form-label">Nome da Marca:</label>
-      <input type="text" class="form-control" v-model="marca.nomeMarca" />
+      <label class="form-label">Nome do Modeo:</label>
+      <input type="text" class="form-control" v-model="modelo.nomeModelo" />
     </div>
     <!----------------------------------------------------------------------------------------------------------------------->
-        <button type="button"  class="btn btn-danger"  v-if="marca.ativo" @click="OnClickDesativar()">Desativar</button>
-         <button type="button"  class="btn btn-success" v-if="!marca.ativo" @click="OnClickAtivar()">Ativar</button>
+        <button type="button"  class="btn btn-danger"  v-if="modelo.ativo" @click="OnClickDesativar()">Desativar</button>
+         <button type="button"  class="btn btn-success" v-if="!modelo.ativo" @click="OnClickAtivar()">Ativar</button>
 
     <!----------------------------------------------------------------------------------------------------------------------->
     <div class="col-md-3 offset-md-9">
@@ -15,7 +15,7 @@
         role="group"
         aria-label="Basic mixed styles example"
       >
-        <router-link type="button" to="/marcas" class="btn btn-warning mb-1"
+        <router-link type="button" to="/modelos" class="btn btn-warning mb-1"
           >Voltar</router-link
         >
 
@@ -40,14 +40,16 @@
 <script lang="ts">
 import MarcaClient from "@/client/marca.clent";
 import { Marca } from "@/model/marca";
+import { Modelo } from "@/model/modelo";
+import modeloClient, { ModeloClient } from "@/client/modelo.client";
 import { defineComponent } from "vue";
 
 export default defineComponent({
-  name: "MarcaCadastro",
+  name: "ModelosEdit",
   data() {
     return {
       marcasList: new Array<Marca>(),
-      marca: new Marca(),
+      modelo: new Modelo(),
       mensagem: {
         ativo: false as boolean,
         titulo: "" as string,
@@ -70,32 +72,15 @@ export default defineComponent({
     }
   },
   methods: {
-    onClickCadastrar() {
-      MarcaClient.cadastrar(this.marca)
-        .then((sucess) => {
-          this.marca = new Marca();
-
-          this.mensagem.ativo = true;
-          this.mensagem.titulo = "Funciona!";
-          this.mensagem.texto = "A marca foi cadastrada com sucesso!";
-          this.mensagem.css = "alert alert-success alert-dismissible fade show";
-        })
-        .catch((error) => {
-          this.mensagem.ativo = true;
-          this.mensagem.titulo = "Algo deu errado!";
-          this.mensagem.texto = error;
-          this.mensagem.css = "alert alert-danger alert-dismissible fade show";
-        });
-    },
     OnClickDesativar(){
-        this.marca.ativo = false;
-        MarcaClient.atualizar(this.marca.id,this.marca)
+        this.modelo.ativo = false;
+        modeloClient.atualizar(this.modelo.id, this.modelo)
         .then((sucess) => {  
             
-            this.marca = new Marca();
+            this.modelo = new Modelo();
             this.mensagem.ativo = true;
           this.mensagem.titulo = "Funciona!";
-          this.mensagem.texto = "A marca foi cadastrada com sucesso!";
+          this.mensagem.texto = "O modelo foi editado com sucesso!";
           this.mensagem.css = "alert alert-success alert-dismissible fade show";
         })
         .catch((error) => {
@@ -109,13 +94,13 @@ export default defineComponent({
     },
     OnClickAtivar(){
                 
-        this.marca.ativo = true;
-        MarcaClient.atualizar(this.marca.id,this.marca)
+        this.modelo.ativo = true;
+        modeloClient.atualizar(this.modelo.id,this.modelo)
         .then((sucess) => {  
-            this.marca = new Marca();
+            this.modelo = new Modelo();
             this.mensagem.ativo = true;
           this.mensagem.titulo = "Funciona!";
-          this.mensagem.texto = "A marca foi cadastrada com sucesso!";
+          this.mensagem.texto = "O modelo foi editado com sucesso!";
           this.mensagem.css = "alert alert-success alert-dismissible fade show";
         })
         .catch((error) => {
@@ -128,16 +113,16 @@ export default defineComponent({
 
     },
     findById(id: number) {
-      MarcaClient.findById(id).then((sucess) => {
-        this.marca = sucess;
+      modeloClient.findById(id).then((sucess) => {
+        this.modelo = sucess;
       });
     },
     onClickEditar() {
-      MarcaClient.atualizar(this.marca.id, this.marca)
+      modeloClient.atualizar(this.modelo.id, this.modelo)
         .then((sucess) => {
-          this.marca = new Marca();
+          this.modelo = new Modelo();
           this.mensagem.ativo = true;
-          this.mensagem.texto = "A marca foi editada com sucesso!.";
+          this.mensagem.texto = "O modelo foi editado com sucesso!";
           this.mensagem.titulo = "Funciona!";
           this.mensagem.css = "alert alert-success alert-dismissible fade show";
         })

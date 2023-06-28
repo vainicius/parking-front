@@ -40,7 +40,7 @@ export class ModeloClient {
   }
   public async delete(id: number): Promise<void> {
     try {
-      await this.axiosClient.delete(`marca?id=${id}`);
+      await this.axiosClient.delete(`modelo?id=${id}`);
     } catch (error: any) {
       return Promise.reject(error.response);
     }
