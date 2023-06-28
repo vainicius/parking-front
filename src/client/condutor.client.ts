@@ -37,7 +37,7 @@ export class condutorClient{
     public async atualizar(id: number, condutor: Condutor): Promise<Condutor>{
         try{
             return (
-              await this.axiosClient.put<Condutor>(`marca?id=${id}`, condutor)
+              await this.axiosClient.put<Condutor>(`condutor?id=${id}`, condutor)
             ).data;
         } catch (error: any){
             return Promise.reject(error.response)
