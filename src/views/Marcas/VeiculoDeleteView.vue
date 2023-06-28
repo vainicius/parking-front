@@ -1,12 +1,25 @@
 <template>
     <div class="row">
-          <div class="col-md-12 text-start">
-            <label class="form-label">Nome do Condutor:</label>
-            <input type="text" class="form-control" v-model="condutor.nomeCondutor">
+           <div class="col-md-12 text-start">
+            <label class="form-label">Placa:</label>
+            <input type="text" class="form-control" v-model="veiculoModel.placa">
           </div>
+          <div class="col-md-12 text-start">
+            <label class="form-label">Cor:</label>
+            <input type="text" class="form-control" v-model="veiculoModel.cor">
+          </div>
+          <div class="col-md-12 text-start">
+            <label class="form-label">Tipo:</label>
+            <input type="text" class="form-control" v-model="veiculoModel.tipo">
+          </div>
+             <div class="col-md-12 text-start">
+      <label class="form-label">Id do Modelo:</label>
+      <input v-on:change="findModelo()" type="text" class="form-control" v-model="idModelo" />
+    </div>
+
            <div class="col-md-3 offset-md-9">
             <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-      <router-link type="button" to="/condutor" class="btn btn-warning mb-1">Voltar</router-link>
+      <router-link type="button" to="/veiculos" class="btn btn-warning mb-1">Voltar</router-link>
       
       <button v-if="this.form === 'deletar'" type="button" class="btn btn-danger" @click="onClickExcluir">Excluir</button>
             </div>   
@@ -22,15 +35,17 @@
 </template>
 
 <script lang="ts">
-import condutorClient from '@/client/condutor.client';
-import { Condutor } from '@/model/Condutor';
+import { Veiculo } from '@/model/veiculo';
+import veiculoClient
+ from '@/client/veiculo.client';
 import { defineComponent } from 'vue';
 
 export default defineComponent({
-    name: 'CondutorDelete',
+    name: 'VeiculoDelete',
     data(){
         return {
-            condutor: new Condutor(),
+            veiculoModel: new Veiculo(),
+            idModelo: 0 as Number,
             mensagem: {
                 ativo: false as boolean,
                 titulo: "" as string,
@@ -55,16 +70,16 @@ export default defineComponent({
     },
     methods:{
         findById(id: number){
-            condutorClient.findById(id)
+            veiculoClient.findById(id)
             .then( sucess =>{
-                    this.condutor = sucess});
+                    this.veiculoModel = sucess});
         },
            onClickExcluir() {
-            condutorClient.delete(this.condutor.id)
+            veiculoClient.delete(this.veiculoModel.id)
                 .then(sucess => {
-                    this.condutor = new Condutor()
+                    this.veiculoModel = new Veiculo()
                     this.mensagem.ativo = true;
-                    this.mensagem.texto = "O Condutor deletado/desativado com sucesso."
+                    this.mensagem.texto = "O veículo deletado/desativado com sucesso."
                     this.mensagem.titulo = "Funciona!";
                     this.mensagem.css = "alert alert-success alert-dismissible fade show";
                     

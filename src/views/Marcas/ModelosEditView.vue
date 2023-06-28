@@ -1,7 +1,7 @@
 <template>
   <div class="row">
     <div class="col-md-12 text-start">
-      <label class="form-label">Nome do Modeo:</label>
+      <label class="form-label">Nome do Modelo:</label>
       <input type="text" class="form-control" v-model="modelo.nomeModelo" />
     </div>
     <!----------------------------------------------------------------------------------------------------------------------->

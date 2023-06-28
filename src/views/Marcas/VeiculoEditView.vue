@@ -1,17 +1,22 @@
 <template>
   <div class="row">
     <div class="col-md-12 text-start">
-      <label class="form-label">Nome do Condutor</label>
-      <input type="text" class="form-control" v-model="condutor.nomeCondutor" />
+            <label class="form-label">Placa:</label>
+            <input type="text" class="form-control" v-model="veiculoModel.placa">
+          </div>
+          <div class="col-md-12 text-start">
+            <label class="form-label">Cor:</label>
+            <input type="text" class="form-control" v-model="veiculoModel.cor">
+          </div>
+          <div class="col-md-12 text-start">
+            <label class="form-label">Tipo:</label>
+            <input type="text" class="form-control" v-model="veiculoModel.tipo">
+          </div>
+             <div class="col-md-12 text-start">
+      <label class="form-label">Id do Modelo:</label>
+      <input v-on:change="findModelo()" type="text" class="form-control" v-model="idModelo" />
     </div>
-    <div class="col-md-12 text-start">
-      <label class="form-label">Telefone do Condutor</label>
-      <input type="text" placeholder="(00)000000-0000" class="form-control" v-model="condutor.telefone" />
-    </div>
-    <div class="col-md-12 text-start">
-      <label class="form-label">CPF do Condutor</label>
-      <input type="text" placeholder="000.000.000-00" class="form-control" v-model="condutor.cpf" />
-    </div>
+
     <!----------------------------------------------------------------------------------------------------------------------->
         <button type="button"  class="btn btn-danger"  v-if="condutor.ativo" @click="OnClickDesativar()">Desativar</button>
          <button type="button"  class="btn btn-success" v-if="!condutor.ativo" @click="OnClickAtivar()">Ativar</button>
@@ -23,7 +28,7 @@
         role="group"
         aria-label="Basic mixed styles example"
       >
-        <router-link type="button" to="/condutor" class="btn btn-warning mb-1"
+        <router-link type="button" to="/veiculos" class="btn btn-warning mb-1"
           >Voltar</router-link
         >
 
@@ -46,16 +51,19 @@
 </template>
 
 <script lang="ts">
-import { Condutor } from "@/model/Condutor";
-import condutorClient from "@/client/condutor.client";
+import { Veiculo } from "@/model/veiculo";
+import veiculoClient from "@/client/veiculo.client";
 import { defineComponent } from "vue";
+import { Modelo } from "@/model/modelo";
+import modeloClient from "@/client/modelo.client";
 
 export default defineComponent({
-  name: "MarcaCadastro",
+  name: "VeiculoEdit",
   data() {
     return {
-      condutorList: new Array<Condutor>(),
-      condutor: new Condutor(),
+      veiculoList: new Array<Veiculo>(),
+      veiculoModel: new Veiculo(),
+      idModelo: 0 as Number,
       mensagem: {
         ativo: false as boolean,
         titulo: "" as string,
@@ -78,35 +86,16 @@ export default defineComponent({
     }
   },
   methods: {
-    OnClickDesativar(){
-        this.condutor.ativo = false;
-        condutorClient.atualizar(this.condutor.id,this.condutor)
-        .then((sucess) => {  
-            
-            this.condutor = new Condutor();
-            this.mensagem.ativo = true;
-          this.mensagem.titulo = "Funciona!";
-          this.mensagem.texto = "O condutor {} foi desativado com sucesso!";
-          this.mensagem.css = "alert alert-success alert-dismissible fade show";
-        })
-        .catch((error) => {
-            this.mensagem.ativo = true;
-            this.mensagem.titulo = "Algo deu errado!";
-            this.mensagem.texto = error;
-            this.mensagem.css = "alert alert-danger alert-dismissible fade show";
 
-        });
-
-    },
     OnClickAtivar(){
                 
-        this.condutor.ativo = true;
-        condutorClient.atualizar(this.condutor.id,this.condutor)
+        this.veiculoModel.ativo = true;
+        veiculoClient.atualizar(this.veiculoModel.id,this.veiculoModel)
         .then((sucess) => {  
-            this.condutor = new Condutor();
+            this.veiculoModel = new Veiculo();
             this.mensagem.ativo = true;
           this.mensagem.titulo = "Funciona!";
-          this.mensagem.texto = "O condutor foi ativado com sucesso!";
+          this.mensagem.texto = "O veículo foi ativado com sucesso!";
           this.mensagem.css = "alert alert-success alert-dismissible fade show";
         })
         .catch((error) => {
@@ -119,16 +108,25 @@ export default defineComponent({
 
     },
     findById(id: number) {
-      condutorClient.findById(id).then((sucess) => {
-        this.condutor = sucess;
+      veiculoClient.findById(id).then((sucess) => {
+        this.veiculoModel = sucess;
       });
     },
+    findModelo(){
+
+      if(this.idModelo != 0){
+        modeloClient.findById(Number(this.idModelo))
+      .then((sucess) => {
+        this.veiculoModel.modelo = sucess;
+      });
+      }
+    },
     onClickEditar() {
-      condutorClient.atualizar(this.condutor.id, this.condutor)
+      veiculoClient.atualizar(this.veiculoModel.id, this.veiculoModel)
         .then((sucess) => {
-          this.condutor= new Condutor();
+          this.veiculoModel= new Veiculo();
           this.mensagem.ativo = true;
-          this.mensagem.texto = "O condutor foi editado com sucesso!";
+          this.mensagem.texto = "O veiculo foi editado com sucesso!";
           this.mensagem.titulo = "Funciona!";
           this.mensagem.css = "alert alert-success alert-dismissible fade show";
         })

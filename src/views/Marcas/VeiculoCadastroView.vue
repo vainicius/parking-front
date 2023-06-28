@@ -76,7 +76,10 @@ export default defineComponent({
         }
     },
     methods:{
+        formataUpper() {
+            this.veiculoModel.placa = this.veiculoModel.placa.toUpperCase()
 
+            },
         onClickCadastrar(){
             veiculoClient.cadastrar(this.veiculoModel)
             .then(sucess => {   
