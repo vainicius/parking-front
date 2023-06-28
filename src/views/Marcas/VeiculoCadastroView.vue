@@ -21,7 +21,7 @@
           
            <div class="col-md-3 offset-md-9">
             <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-      <router-link type="button" to="/veiculo" class="btn btn-warning mb-1">Voltar</router-link>
+      <router-link type="button" to="/veiculos" class="btn btn-warning mb-1">Voltar</router-link>
       
       <button type="button" class="btn btn-success mb-1" @click="onClickCadastrar">Cadastrar</button>
             </div>   

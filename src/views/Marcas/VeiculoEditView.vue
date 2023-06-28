@@ -18,8 +18,8 @@
     </div>
 
     <!----------------------------------------------------------------------------------------------------------------------->
-        <button type="button"  class="btn btn-danger"  v-if="condutor.ativo" @click="OnClickDesativar()">Desativar</button>
-         <button type="button"  class="btn btn-success" v-if="!condutor.ativo" @click="OnClickAtivar()">Ativar</button>
+        <button type="button"  class="btn btn-danger"  v-if="veiculoModel.ativo" @click="OnClickDesativar()">Desativar</button>
+         <button type="button"  class="btn btn-success" v-if="!veiculoModel.ativo" @click="OnClickAtivar()">Ativar</button>
 
     <!----------------------------------------------------------------------------------------------------------------------->
     <div class="col-md-3 offset-md-9">
@@ -96,6 +96,26 @@ export default defineComponent({
             this.mensagem.ativo = true;
           this.mensagem.titulo = "Funciona!";
           this.mensagem.texto = "O veículo foi ativado com sucesso!";
+          this.mensagem.css = "alert alert-success alert-dismissible fade show";
+        })
+        .catch((error) => {
+            this.mensagem.ativo = true;
+            this.mensagem.titulo = "Algo deu errado!";
+            this.mensagem.texto = error;
+            this.mensagem.css = "alert alert-danger alert-dismissible fade show";
+
+        });
+
+    },
+    OnClickDesativar(){
+        this.veiculoModel.ativo = false;
+        veiculoClient.atualizar(this.veiculoModel.id,this.veiculoModel)
+        .then((sucess) => {  
+            
+            this.veiculoModel = new Veiculo();
+            this.mensagem.ativo = true;
+          this.mensagem.titulo = "Funciona!";
+          this.mensagem.texto = "O veículo foi desativado com sucesso!";
           this.mensagem.css = "alert alert-success alert-dismissible fade show";
         })
         .catch((error) => {
