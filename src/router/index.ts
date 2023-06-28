@@ -111,6 +111,11 @@ const routes: Array<RouteRecordRaw> = [
     name: "movimentacoes",
     component: () => import("../views/Marcas/MovimentacaoView.vue"),
   },
+  {
+    path: "/cadastrar-movimentacao",
+    name: "cadastrar-movimentacao",
+    component: () => import("../views/Marcas/MovimentacaoCadastroView.vue"),
+  },
 ];
 
 const router = createRouter({

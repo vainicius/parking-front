@@ -27,7 +27,7 @@ export class movimentacaoClient {
   }
   public async cadastrar(movimentacao: Movimentacao): Promise<Movimentacao> {
     try {
-      return (await this.axiosClient.post<Movimentacao>("movimentacao", Movimentacao))
+      return (await this.axiosClient.post<Movimentacao>("movimentacao", movimentacao))
         .data;
     } catch (error: any) {
       return Promise.reject(error.response);
