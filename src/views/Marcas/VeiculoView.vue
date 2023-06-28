@@ -15,7 +15,7 @@
         <th scope="col">Cor</th>
         <th scope="col">Ano do veículo</th>
         <td>
-        <router-link type="button" to="/cadastrar-condutor" class="btn btn-success">Cadastrar</router-link>
+        <router-link type="button" to="/cadastrar-veiculo" class="btn btn-success">Cadastrar</router-link>
         </td>
       </tr>
     </thead>

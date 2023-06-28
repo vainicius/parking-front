@@ -1,20 +1,27 @@
 <template>
     <div class="row">
           <div class="col-md-12 text-start">
-            <label class="form-label">Nome do Condutor:</label>
-            <input type="text" class="form-control" v-model="condutor.nomeCondutor">
+            <label class="form-label">Placa:</label>
+            <input type="text" class="form-control" v-model="veiculoModel.placa">
           </div>
           <div class="col-md-12 text-start">
-            <label class="form-label">CPF do Condutor:</label>
-            <input data-maska="###.###.###-##" type="text" class="form-control" placeholder="000.000.000-00" v-model="condutor.cpf">
+            <label class="form-label">Cor:</label>
+            <input type="text" class="form-control" v-model="veiculoModel.cor">
           </div>
           <div class="col-md-12 text-start">
-            <label class="form-label">Telefone do Condutor:</label>
-            <input data-maska="(##)#####-####" type="text" class="form-control" placeholder="(00)00000-0000" v-model="condutor.telefone">
+            <label class="form-label">Tipo:</label>
+            <input type="text" class="form-control" v-model="veiculoModel.tipo">
           </div>
+             <div class="col-md-12 text-start">
+      <label class="form-label">Id do Modelo:</label>
+      <input v-on:change="findModelo()" type="text" class="form-control" v-model="idModelo" />
+    </div>
+
+
+          
            <div class="col-md-3 offset-md-9">
             <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-      <router-link type="button" to="/condutor" class="btn btn-warning mb-1">Voltar</router-link>
+      <router-link type="button" to="/veiculo" class="btn btn-warning mb-1">Voltar</router-link>
       
       <button type="button" class="btn btn-success mb-1" @click="onClickCadastrar">Cadastrar</button>
             </div>   
@@ -31,10 +38,11 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { Condutor } from '@/model/Condutor';
-import condutorClient from '@/client/condutor.client';
-
-import { vMaska } from "maska"
+import { Veiculo } from '@/model/veiculo';
+import veiculoClient from '@/client/veiculo.client';
+import { vMaska } from "maska";
+import { Modelo } from '@/model/modelo';
+import modeloClient from '@/client/modelo.client';
 
 
 
@@ -42,7 +50,9 @@ export default defineComponent({
     name: 'CondutorCadastro',
     data(){
         return {
-            condutor: new Condutor(),
+            veiculoModel: new Veiculo(),
+            modeloList: new Array<Modelo>(),
+            idModelo: 0 as Number,
             mensagem: {
                 ativo: false as boolean,
                 titulo: "" as string,
@@ -68,13 +78,14 @@ export default defineComponent({
     methods:{
 
         onClickCadastrar(){
-            condutorClient.cadastrar(this.condutor)
-            .then(sucess => {
-                this.condutor = new Condutor()
+            veiculoClient.cadastrar(this.veiculoModel)
+            .then(sucess => {   
+                
+                this.veiculoModel = sucess;
                 
                 this.mensagem.ativo = true;
                 this.mensagem.titulo = "Funciona!";
-                this.mensagem.texto = "O condutor foi cadastrado com sucesso!";
+                this.mensagem.texto = "O veiculo foi cadastrado com sucesso!";
                 this.mensagem.css = "alert alert-success alert-dismissible fade show";
             })
             .catch(error =>{
@@ -86,11 +97,30 @@ export default defineComponent({
             });
         },
         findById(id: number){
-            condutorClient.findById(id)
+            veiculoClient.findById(id)
             .then(sucess =>{
-                this.condutor = sucess
+                this.veiculoModel = sucess
             });
-        }
+        },
+           findAll() {
+      modeloClient
+        .findAll()
+        .then((sucess) => {
+          this.modeloList = sucess;
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
+    findModelo(){
+
+      if(this.idModelo != 0){
+        modeloClient.findById(Number(this.idModelo))
+      .then((sucess) => {
+        this.veiculoModel.modelo = sucess;
+      });
+      }
+    }
     }
 });
 
