@@ -22,20 +22,20 @@
     </div>
     <div class="col-md-12 text-start">
       <label class="form-label">Horas para desconto:</label>
-      <input type="text"  v-maska data-maska="##:##:##" placeholder="##:##:##" class="form-control" v-model="ConfiguracaoModel.tempoParaDesconto" />
+      <input type="text" class="form-control" v-model="ConfiguracaoModel.tempoParaDesconto" />
     </div>
 
     <div class="col-md-12 text-start">
       <label class="form-label">Horas de desconto:</label>
-      <input type="text" v-maska data-maska="##:##:##" placeholder="##:##:##" class="form-control" v-model="ConfiguracaoModel.tempoDeDesconto" />
+      <input type="text"   class="form-control" v-model="ConfiguracaoModel.tempoDeDesconto" />
     </div>
     <div class="col-md-12 text-start">
       <label class="form-label">Horário de abertura:</label>
-      <input type="text" v-maska data-maska="##:##:##" placeholder="##:##:##" class="form-control" v-model="ConfiguracaoModel.InicioExpediente" />
+      <input type="text"   class="form-control" v-model="ConfiguracaoModel.InicioExpediente" />
     </div>
     <div class="col-md-12 text-start">
       <label class="form-label">Horário de encerramento:</label>
-      <input type="text" v-maska data-maska="##:##:##" placeholder="##:##:##" class="form-control" v-model="ConfiguracaoModel.fimExpediente" />
+      <input type="text"   class="form-control" v-model="ConfiguracaoModel.fimExpediente" />
     </div>
     
     <!----------------------------------------------------------------------------------------------------------------------->

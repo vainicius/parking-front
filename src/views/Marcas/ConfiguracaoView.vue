@@ -30,7 +30,6 @@
      <tbody class="table-group-divider">
       
       <tr>
-        <th scope="row"> {{ configuracao.vagasCarro }} </th>
         <th scope="row">{{ configuracao.vagasCarro}} </th>  
         <th scope="row">{{ configuracao.vagasMoto}} </th> 
         <th scope="row">{{ configuracao.valorHora}} </th> 
