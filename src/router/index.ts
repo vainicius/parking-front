@@ -59,7 +59,22 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: "/condutor",
     name: "condutor",
-    component: () => import("../views/Marcas/CodutorView.vue"),
+    component: () => import("../views/Marcas/CondutorView.vue"),
+  },
+  {
+    path: "/cadastrar-condutor",
+    name: "cadastrar-condutor",
+    component: () => import("../views/Marcas/CondutorCadastroView.vue"),
+  },
+  {
+    path: "/editar-condutor",
+    name: "editar-condutor",
+    component: () => import("../views/Marcas/CondutorEditView.vue"),
+  },
+  {
+    path: "/deletar-condutor",
+    name: "deletar-condutor",
+    component: () => import("../views/Marcas/CondutorDeleteView.vue"),
   },
 ];
 

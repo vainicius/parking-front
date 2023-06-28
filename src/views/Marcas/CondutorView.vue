@@ -24,14 +24,14 @@
           <span v-if="!item.ativo" class="badge rounded-pill text-bg-danger">INATIVO</span>
           {{ item.id }} </th>
         <th scope="row">{{ item.nomeCondutor}} </th>  
-        <!--      
+              
         <td><router-link type="button" class="btn btn-warning" :to="{ name: 'editar-condutor', query: { id: item.id, form: 'editar' } }">
       Editar <i class="bi bi-pencil-square"></i></router-link>
         <router-link type="button" class="btn btn-danger" :to="{ name: 'deletar-condutor', query: {id: item.id, form: 'deletar'}}">
     Excluir <i class="bi bi-trash3"></i></router-link>
     
         </td>
-        -->
+        
       </tr>
     </tbody>
   </table>
