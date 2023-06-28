@@ -6,11 +6,11 @@
           </div>
           <div class="col-md-12 text-start">
             <label class="form-label">CPF do Condutor:</label>
-            <input data-maska="###.###.###-##" type="text" class="form-control" placeholder="000.000.000-00" v-model="condutor.cpf">
+            <input type="text" class="form-control" v-maska data-maska="###.###.###-##" placeholder="000.000.000-00" v-model="condutor.cpf">
           </div>
           <div class="col-md-12 text-start">
             <label class="form-label">Telefone do Condutor:</label>
-            <input data-maska="(##)#####-####" type="text" class="form-control" placeholder="(00)00000-0000" v-model="condutor.telefone">
+            <input type="text" class="form-control" v-maska data-maska="(##) # ####-####" placeholder="(00) 0 0000-0000" v-model="condutor.telefone">
           </div>
            <div class="col-md-3 offset-md-9">
             <div class="btn-group" role="group" aria-label="Basic mixed styles example">
@@ -33,8 +33,7 @@
 import { defineComponent } from 'vue';
 import { Condutor } from '@/model/Condutor';
 import condutorClient from '@/client/condutor.client';
-
-import { vMaska } from "maska"
+import { vMaska } from 'maska';
 
 
 

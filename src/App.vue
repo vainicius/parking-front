@@ -36,7 +36,7 @@
           </li>
 
           <li class="nav-item">
-            <router-link class="nav-link" to="/">Configurações</router-link>
+            <router-link class="nav-link" to="/configuracoes">Configurações</router-link>
           </li>
            <li class="nav-item">
             <router-link class="nav-link" to="/condutor">Condutor</router-link>

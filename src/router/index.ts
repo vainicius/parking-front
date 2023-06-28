@@ -96,6 +96,16 @@ const routes: Array<RouteRecordRaw> = [
     name: "deletar-veiculo",
     component: () => import("../views/Marcas/VeiculoDeleteView.vue"),
   },
+  {
+    path: "/configuracoes",
+    name: "configuracoes",
+    component: () => import("../views/Marcas/ConfiguracaoView.vue"),
+  },
+  {
+    path: "/editar-configuracao",
+    name: "editar-configuracao",
+    component: () => import("../views/Marcas/ConfiguracaoEditView.vue"),
+  },
 ];
 
 const router = createRouter({

@@ -86,7 +86,7 @@ export default defineComponent({
             this.condutor = new Condutor();
             this.mensagem.ativo = true;
           this.mensagem.titulo = "Funciona!";
-          this.mensagem.texto = "O condutor {} foi desativado com sucesso!";
+          this.mensagem.texto = "O condutor foi desativado com sucesso!";
           this.mensagem.css = "alert alert-success alert-dismissible fade show";
         })
         .catch((error) => {
