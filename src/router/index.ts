@@ -76,6 +76,26 @@ const routes: Array<RouteRecordRaw> = [
     name: "deletar-condutor",
     component: () => import("../views/Marcas/CondutorDeleteView.vue"),
   },
+  {
+    path: "/veiculos",
+    name: "veiculos",
+    component: () => import("../views/Marcas/VeiculoView.vue"),
+  },
+  {
+    path: "/cadastrar-veiculo",
+    name: "cadastrar-veiculo",
+    component: () => import("../views/Marcas/VeiculoCadastroView.vue"),
+  },
+  {
+    path: "/editar-veiculo",
+    name: "editar-veiculo",
+    component: () => import("../views/Marcas/VeiculoEditView.vue"),
+  },
+  {
+    path: "/deletar-veiculo",
+    name: "deletar-veiculo",
+    component: () => import("../views/Marcas/VeiculoDeleteView.vue"),
+  },
 ];
 
 const router = createRouter({
