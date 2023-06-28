@@ -4,7 +4,7 @@
     <thead>
       <tr>
         <th scope="col">#</th>
-        <th scope="col">Veículo</th>
+        <th scope="col">Condutor</th>
         <th scope="col">Placa</th>
         <th scope="col">Horário entrada</th>
         <th scope="col">Horário saída</th>

@@ -106,6 +106,11 @@ const routes: Array<RouteRecordRaw> = [
     name: "editar-configuracao",
     component: () => import("../views/Marcas/ConfiguracaoEditView.vue"),
   },
+  {
+    path: "/movimentacoes",
+    name: "movimentacoes",
+    component: () => import("../views/Marcas/MovimentacaoView.vue"),
+  },
 ];
 
 const router = createRouter({

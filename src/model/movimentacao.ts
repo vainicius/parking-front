@@ -5,6 +5,7 @@ import { Veiculo } from "./veiculo";
 export class Movimentacao extends AbstractEntity{
     veiculo! : Veiculo
     condutor! : Condutor
+    entrada! : Date
     saida! : Date
     tempo! : Date
     tempoDesconto! : Date
