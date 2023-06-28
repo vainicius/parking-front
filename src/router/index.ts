@@ -56,6 +56,11 @@ const routes: Array<RouteRecordRaw> = [
     name: "editar-modelo",
     component: () => import("../views/Marcas/ModelosEditView.vue"),
   },
+  {
+    path: "/condutor",
+    name: "condutor",
+    component: () => import("../views/Marcas/CodutorView.vue"),
+  },
 ];
 
 const router = createRouter({

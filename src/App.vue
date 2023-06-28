@@ -38,6 +38,9 @@
           <li class="nav-item">
             <router-link class="nav-link" to="/">Configurações</router-link>
           </li>
+           <li class="nav-item">
+            <router-link class="nav-link" to="/condutor">Condutor</router-link>
+          </li>
         </ul>
         <router-link
           type="button"
