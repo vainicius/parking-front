@@ -28,9 +28,9 @@ public async cadastrar(Condutor: Configuracao): Promise<Configuracao> {
   }
 }
 
-public async atualizar(Configuracao: Configuracao): Promise<Configuracao> {
+public async atualizar(id: number, configuracao: Configuracao): Promise<Configuracao> {
   try {
-      return (await this.axiosClient.put<Configuracao>(`configuracao?id=${Configuracao.id}`, Configuracao)).data
+      return (await this.axiosClient.put<Configuracao>(`configuracao?id=${id}`,configuracao)).data
   } catch (error: any) {
       return Promise.reject(error.response)
   }

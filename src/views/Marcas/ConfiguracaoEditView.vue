@@ -100,14 +100,17 @@ export default defineComponent({
   methods: {
 
     onClickEditar() {
-      this.ConfiguracaoClient.atualizar(this.ConfiguracaoModel)
+      this.ConfiguracaoClient.atualizar(this.ConfiguracaoModel.id, this.ConfiguracaoModel)
         .then((sucess) => {
+          this.ConfiguracaoModel = new Configuracao();
+          console.log(this.ConfiguracaoModel.id)
           this.mensagem.ativo = true;
           this.mensagem.texto = "A Configuração foi editada com sucesso!";
           this.mensagem.titulo = "Funciona!";
           this.mensagem.css = "alert alert-success alert-dismissible fade show";
         })
         .catch((error) => {
+          console.log(this.ConfiguracaoModel.id)
           this.mensagem.ativo = true;
           this.mensagem.texto = error.data;
           this.mensagem.titulo = "Algo deu errado! ";
