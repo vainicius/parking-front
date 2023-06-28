@@ -1,12 +1,12 @@
 <template>
     <div class="row">
           <div class="col-md-12 text-start">
-            <label class="form-label">Nome da Marca:</label>
-            <input type="text" class="form-control" v-model="marca.nomeMarca">
+            <label class="form-label">Nome do Condutor:</label>
+            <input type="text" class="form-control" v-model="condutor.nomeCondutor">
           </div>
            <div class="col-md-3 offset-md-9">
             <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-      <router-link type="button" to="/marcas" class="btn btn-warning mb-1">Voltar</router-link>
+      <router-link type="button" to="/condutor" class="btn btn-warning mb-1">Voltar</router-link>
       
       <button v-if="this.form === 'deletar'" type="button" class="btn btn-danger" @click="onClickExcluir">Excluir</button>
             </div>   
@@ -22,15 +22,15 @@
 </template>
 
 <script lang="ts">
-import MarcaClient from '@/client/marca.clent';
-import { Marca } from '@/model/marca';
+import condutorClient from '@/client/condutor.client';
+import { Condutor } from '@/model/Condutor';
 import { defineComponent } from 'vue';
 
 export default defineComponent({
-    name: 'MarcaCadastro',
+    name: 'CondutorDelete',
     data(){
         return {
-            marca: new Marca(),
+            condutor: new Condutor(),
             mensagem: {
                 ativo: false as boolean,
                 titulo: "" as string,
@@ -54,36 +54,17 @@ export default defineComponent({
         }
     },
     methods:{
-
-        onClickCadastrar(){
-            MarcaClient.cadastrar(this.marca)
-            .then(sucess => {
-                this.marca = new Marca()
-                
-                this.mensagem.ativo = true;
-                this.mensagem.titulo = "Funciona!";
-                this.mensagem.texto = "A marca foi cadastrada com sucesso!";
-                this.mensagem.css = "alert alert-success alert-dismissible fade show";
-            })
-            .catch(error =>{
-                this.mensagem.ativo = true;
-                this.mensagem.titulo = "Algo deu errado!";
-                this.mensagem.texto = error;
-                this.mensagem.css = "alert alert-danger alert-dismissible fade show"
-
-            });
-        },
         findById(id: number){
-            MarcaClient.findById(id)
+            condutorClient.findById(id)
             .then( sucess =>{
-                    this.marca = sucess});
+                    this.condutor = sucess});
         },
            onClickExcluir() {
-            MarcaClient.delete(this.marca.id)
+            condutorClient.delete(this.condutor.id)
                 .then(sucess => {
-                    this.marca = new Marca()
+                    this.condutor = new Condutor()
                     this.mensagem.ativo = true;
-                    this.mensagem.texto = "A marca foi deletada/desativada com sucesso."
+                    this.mensagem.texto = "O Condutor deletado/desativado com sucesso."
                     this.mensagem.titulo = "Funciona!";
                     this.mensagem.css = "alert alert-success alert-dismissible fade show";
                     
